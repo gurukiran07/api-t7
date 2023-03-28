@@ -76,7 +76,7 @@
   ```
   When ID is not found the response would be `{"message": "User not found with ID #. ", "success": false}`.
 
-- POST - https://api-t5.onrender.com/add
+- POST - https://api-t7.onrender.com/add
   ```
   # JSON Body
   {
@@ -92,16 +92,16 @@
   ```
   When params of the JSON body are wrong then the response would be `{"message": "User not added. Please provide both email and firstName", "success": false}`.
 
-- GET - https://api-t5.onrender.com/users/2
+- GET - https://api-t7.onrender.com/user/64225882be2f224c0b28a11a
   ```
-  {
-    "success": true,
-    "user": {
-        "email": "qwe@dal.ca",
-        "firstName": "qwe",
-        "id": 2
+    {
+        "success": true,
+        "user": {
+            "_id": "64225882be2f224c0b28a11a",
+            "email": "lms@dal.ca",
+            "firstName": "lmq"
+        }
     }
-  }
   ```
   When ID is not found then the response would be `{"success": false, "message": "ID not found"}`.
 

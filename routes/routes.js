@@ -66,7 +66,7 @@ router.put("/update/:id", async (req, res) => {
     const id_status = mongoose.Types.ObjectId.isValid(id);
     const params_status = user?.email && user?.firstName
     if (id_status && params_status){
-        Users.findByIdAndUpdate({_id: id}, {$set: {firstName: user.firstName, email: user.email}}).
+        await Users.findByIdAndUpdate({_id: id}, {$set: {firstName: user.firstName, email: user.email}}).
         then((data) => {
             res.status(200).json({
                 message: "User udpated",
@@ -88,5 +88,28 @@ router.put("/update/:id", async (req, res) => {
         })
     }
 });
+
+router.delete('/delete/:id', async (req, res) => {
+    const id = req.params.id;
+    if (mongoose.Types.ObjectId.isValid(id)){
+        await Users.findByIdAndRemove(id).then((data) => {
+            res.status(200).json({
+                success: true,
+                message : "User deleted"
+            })
+        }).catch((err) => {
+            res.status(500).json({
+                success: false,
+                message: "Remove failed"
+            })
+        })
+    }
+    else{
+        res.status(500).json({
+            success: false,
+            message: "Invalid ID"
+        })
+    }
+})
 
 module.exports = router
