@@ -60,7 +60,7 @@
         ]
     }
   ```
-- PUT - https://api-t7.onrender.com/update/\<id\>
+- PUT - https://api-t7.onrender.com/update/<id\>
   ```
   # JSON Body
   {
