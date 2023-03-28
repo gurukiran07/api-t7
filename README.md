@@ -92,7 +92,7 @@
   ```
   When params of the JSON body are wrong then the response would be `{"message": "User not added. Please provide both email and firstName", "success": false}`.
 
-- GET - https://api-t7.onrender.com/user/\<id>
+- GET - https://api-t7.onrender.com/user/<id\>
   ```
     {
         "success": true,
@@ -105,7 +105,7 @@
   ```
   When ID is not found then the response would be `{"success": false, "message": "ID not found"}`.
 
-DELETE - https://api-t7.onrender.com/delete/\<id>
+DELETE - https://api-t7.onrender.com/delete/<id\>
 
   ```
   {
