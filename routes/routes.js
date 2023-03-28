@@ -83,7 +83,7 @@ router.put("/update/:id", async (req, res) => {
     }
     else{
         res.status(500).json({
-            message: "Couldn't find the ID",
+            message: "Couldn't find the ID or wrong params",
             success: false
         })
     }
