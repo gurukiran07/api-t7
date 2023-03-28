@@ -10,7 +10,7 @@
 
 ## Prerequisites
 
-* Visual Studio code Installation : 'https://code.visualstudio.com/download'
+* Visual Studio code Installation : https://code.visualstudio.com/download
 * Mongoosejs : https://mongoosejs.com/
 * Expressjs : https://expressjs.com/
 * Nodejs : https://nodejs.org/en
@@ -60,7 +60,7 @@
         ]
     }
   ```
-- PUT - https://api-t7.onrender.com/update/64225beacd5dd69851f3f27b
+- PUT - https://api-t7.onrender.com/update/\<id>
   ```
   # JSON Body
   {
@@ -74,7 +74,7 @@
     "success": true
   }
   ```
-  When ID is not found the response would be `{"message": "User not found with ID #. ", "success": false}`.
+  When ID is invalid or has wrong params found the response would be `{"message": "Couldn't find the ID or wrong params", "success": false}`. When ID is not found the response `{"message": "ID not found", "success": false}`.
 
 - POST - https://api-t7.onrender.com/add
   ```
@@ -92,7 +92,7 @@
   ```
   When params of the JSON body are wrong then the response would be `{"message": "User not added. Please provide both email and firstName", "success": false}`.
 
-- GET - https://api-t7.onrender.com/user/64225882be2f224c0b28a11a
+- GET - https://api-t7.onrender.com/user/\<id>
   ```
     {
         "success": true,
@@ -105,3 +105,12 @@
   ```
   When ID is not found then the response would be `{"success": false, "message": "ID not found"}`.
 
+DELETE - https://api-t7.onrender.com/delete/\<id>
+
+  ```
+  {
+    success: true,
+    message : "User deleted"
+  }
+  ```
+  When ID is not found then the response would be `{"success": false, "message": "ID not found"}`. When ID is in invalid format then response would be `{"success": false, "message": "Invalid ID"}`.

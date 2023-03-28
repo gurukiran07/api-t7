@@ -47,10 +47,18 @@ router.get("/user/:id", async(req, res) => {
         await Users.findById(id).then((data)=>{
             user = data
         });
-        res.status(200).json({
-            success: true,
-            user: user
-        })
+        if (user != null){
+            res.status(200).json({
+                success: true,
+                user: user
+            })
+        }
+        else{
+            res.status(500).json({
+                success: false,
+                message: "ID not found"
+            })
+        }
     }
     else{
         res.status(500).json({
@@ -66,12 +74,21 @@ router.put("/update/:id", async (req, res) => {
     const id_status = mongoose.Types.ObjectId.isValid(id);
     const params_status = user?.email && user?.firstName
     if (id_status && params_status){
-        await Users.findByIdAndUpdate({_id: id}, {$set: {firstName: user.firstName, email: user.email}}).
+        await Users.findByIdAndUpdate(id, {$set: {firstName: user.firstName, email: user.email}}).
         then((data) => {
-            res.status(200).json({
-                message: "User udpated",
-                success: true
-            })
+            if (data != null){
+                res.status(200).json({
+                    message: "User udpated",
+                    success: true
+                })
+            }
+            else{
+                res.status(500).json({
+                    message: "ID not found",
+                    success: false
+                })
+            }
+            
             console.log(data)
         }).catch((err) => {
             res.status(500).json({
@@ -93,10 +110,18 @@ router.delete('/delete/:id', async (req, res) => {
     const id = req.params.id;
     if (mongoose.Types.ObjectId.isValid(id)){
         await Users.findByIdAndRemove(id).then((data) => {
-            res.status(200).json({
-                success: true,
-                message : "User deleted"
-            })
+            if (data != null){
+                res.status(200).json({
+                    success: true,
+                    message : "User deleted"
+                })
+            }
+            else{
+                res.status(500).json({
+                    success: false,
+                    message: "ID not found"
+                })
+            }
         }).catch((err) => {
             res.status(500).json({
                 success: false,
