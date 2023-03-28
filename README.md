@@ -36,6 +36,8 @@
 
 ## Endpoints for testing
 
+Replace `<id>` with `id` to test.
+
 - GET - https://api-t7.onrender.com/users
   ```
     {
