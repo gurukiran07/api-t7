@@ -107,7 +107,7 @@ Replace `<id>` with `id` to test.
   ```
   When ID is not found then the response would be `{"success": false, "message": "ID not found"}`.
 
-DELETE - https://api-t7.onrender.com/delete/<id\>
+- DELETE - https://api-t7.onrender.com/delete/<id\>
 
   ```
   {
